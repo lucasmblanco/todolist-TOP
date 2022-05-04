@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <title>Todo List</title>
+</head>
+<body>
+    <header>
+        <div id="logo-container">
+            <img src="../src/components/main-page/todo-logo.png" alt="page logo">
+        </div>
+    </header>
+    <aside>
+        <div id="action-buttons-container"><button id="new-task">+</button></div>
+        <div id="navigation-buttons-container">
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">TODAY</a></li>
+                    <li><a href="#">UPCOMING</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="projects-button-container">
+            <nav>
+                <ul></ul>
+            </nav>
+        </div>
+    </aside>
+    <main>
+        <div id="page-frame">HOME</div>
+    </main>
+    <footer></footer>
+    <div class="page-dimmer">
+    <div id="form-task">
+        <form id="formAddTask">
+            <div class="formElementsContainer">
+                <label for="title">Title</label>
+                <input id='title' type="text">
+            </div>
+            <div class="formElementContainer">
+                <label for="Details">Details</label>
+                <textArea id="details"></textArea>
+            </div>
+            <div class="formElementContainer">
+                <label for="due-date">Due Date</label>
+                <input type="date" name="dueDate" id="due-date">
+            </div>
+            <div class="formElementContainer">
+                <legend>Priority</legend>
+                <label for="priority-task"><input type="radio" name="priority" id="priority-task" value="low">Low</label><br>
+                <label for="priority-task"><input type="radio" name="priority" id="priority-task" value="medium">Medium</label><br>
+                <label for="priority-task"><input type="radio" name="priority" id="priority-task" value="high">High</label><br>
+            </div>
+            <div class="formElementContainer">
+            <input id="button-add-task"type="submit" value="Add Task">
+            <input id="button-cancel-form" type="button"  id="cancel-form" value="Cancel">
+            </div>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
