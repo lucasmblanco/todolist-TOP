@@ -1,35 +1,10 @@
-import { format, startOfToday, parseISO } from 'date-fns'
+import { format, addDays, eachDayOfInterval, } from 'date-fns';
+import inputData from '../../data-managment/components/data-catcher';
 
 
 
-
-const inputData = (function() {
-    const wrapper = document.querySelector('div#form-task')
-    const form = wrapper.querySelector('form'); 
-
-
-    const _title = form.querySelector('input[id="title"]'); 
-    const _details = form.querySelector('textarea[id="details"]');
-    const _dueDate = form.querySelector('input[id="due-date"]'); 
-    const _priorityArr = form.querySelectorAll('input[class="priority-task"]'); 
-    let _priorityVal; 
-
-    function getPriorityStatus() {
-        for(let i = 0; i < _priorityArr.length; i++){
-            if(_priorityArr[i].checked) {
-                _priorityVal = _priorityArr[i].value; 
-            }
-        } 
-    }
-
-    class Task {
-        constructor(title, details, priority){
-            this.title = title;
-            this.details = details; 
-            this.priority = priority;
-        }
-
-        createTaskPanel = function(){
+const taskPanel = (function(){
+    const panelCreation = function(title, details, date, priority){
             const mainPage = document.querySelector('div#main-window'); 
             const containerPanel = document.createElement('div');
             containerPanel.classList.add('container-panel'); 
@@ -38,24 +13,31 @@ const inputData = (function() {
             containerTitle.classList.add('container-title'); 
             const titleDiv = document.createElement('div');
             titleDiv.classList.add('title'); 
-            titleDiv.textContent = this.title; 
+            titleDiv.textContent = title; 
             containerTitle.append(titleDiv);
 
             const containerDetails = document.createElement('div');
             containerDetails.classList.add('container-details');
             const detailsDiv = document.createElement('div'); 
             detailsDiv.classList.add('details');
-            detailsDiv.textContent = this.details; 
+            detailsDiv.textContent = details; 
             containerDetails.append(detailsDiv); 
+
+            const containerDueDate = document.createElement('div'); 
+            containerDueDate.classList.add('container-duedate'); 
+            const dueDateDiv = document.createElement('div'); 
+            dueDateDiv.classList.add('due-date'); 
+            dueDateDiv.textContent = date;   
+            containerDueDate.append(dueDateDiv);
 
             const containerPriority = document.createElement('div');
             containerPriority.classList.add('container-priority');  
             const priorityDiv = document.createElement('div');
             priorityDiv.classList.add('priority'); 
-            priorityDiv.textContent = this.priority; 
+            priorityDiv.textContent = priority; 
             containerPriority.append(priorityDiv); 
 
-            containerPanel.append(containerTitle, containerDetails, containerPriority); 
+            containerPanel.append(containerTitle, containerDetails, containerDueDate, containerPriority); 
             mainPage.appendChild(containerPanel); 
 
             const containerCheckButton = document.createElement('div');
@@ -72,7 +54,8 @@ const inputData = (function() {
             const containerEditButton = document.createElement('div'); 
             containerEditButton.classList.add('container-edit');
         
-            const editButton = document.createElement('button'); 
+            const editButton = document.createElement('button');
+            editButton.classList.add('edit-button');  
             const iElementEditButton = document.createElement('i'); 
         
             iElementEditButton.classList.add('edit-button-icon'); 
@@ -84,77 +67,51 @@ const inputData = (function() {
             containerDeleteButton.classList.add('container-delete');
         
             const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-button');
             const iElementDeleteButton = document.createElement('i');
         
             iElementDeleteButton.classList.add('delete-button-icon');
             deleteButton.append(iElementDeleteButton);
             containerDeleteButton.appendChild(deleteButton); 
         
+
             containerPanel.append(containerEditButton, containerDeleteButton); 
-        }
+
+            
+        
     }
 
-    const createTaskAndPanelOrder = function(){
-        const newTask = new Task(_title.value, _details.value, _priorityVal); 
-        newTask.createTaskPanel();
-        storageData.tasks.push(newTask);  
-    }
-
-    const createTaskAndPanelWithDateOrder = function(){
-        const newTaskWithDueDate = new TaskWithDueDate(_title.value, _details.value, _dueDate.value, _priorityVal); 
-        newTaskWithDueDate.createTaskPanelWithDate();
-        storageData.tasksWithDueDate.push(newTaskWithDueDate);  
-    }
-
-  
-     class TaskWithDueDate extends Task{
-        constructor(title, details, dueDate, priority) {
-            super(title, details, priority); 
-            this.dueDate = dueDate; 
-        }
-
-
-        get dueDate(){
-            return this._dueDate;
-        }
-
-
-        set dueDate(value){
-            const newDateFormat = format(new Date(value.split('-')), 'dd/MM/yyyy');
-            this._dueDate = newDateFormat; 
-        }
-
-        createTaskPanelWithDate = function() {
-            const mainPage = document.querySelector('div#main-window'); 
+   const panelCreationInDate = function(title,details, dueDate,priority, elementWithDate){
+            const mainContainer = elementWithDate; 
             const containerPanel = document.createElement('div');
-            containerPanel.classList.add('container-panel'); 
+            containerPanel.classList.add('container-panel-mini'); 
 
             const containerTitle = document.createElement('div'); 
             containerTitle.classList.add('container-title'); 
             const titleDiv = document.createElement('div');
             titleDiv.classList.add('title'); 
-            titleDiv.textContent = this.title; 
+            titleDiv.textContent = title; 
             containerTitle.append(titleDiv);
 
             const containerDetails = document.createElement('div');
             containerDetails.classList.add('container-details');
             const detailsDiv = document.createElement('div'); 
             detailsDiv.classList.add('details');
-            detailsDiv.textContent = this.details; 
+            detailsDiv.textContent = details; 
             containerDetails.append(detailsDiv); 
 
             const containerDueDate = document.createElement('div'); 
             containerDueDate.classList.add('container-duedate'); 
             const dueDateDiv = document.createElement('div'); 
             dueDateDiv.classList.add('due-date'); 
-            dueDateDiv.textContent = this.dueDate; 
+            dueDateDiv.textContent = dueDate; 
             containerDueDate.append(dueDateDiv); 
 
             const containerPriority = document.createElement('div');
             containerPriority.classList.add('container-priority');  
             const priorityDiv = document.createElement('div');
             priorityDiv.classList.add('priority'); 
-            priorityDiv.textContent = this.priority; 
+            priorityDiv.textContent = priority; 
             containerPriority.append(priorityDiv); 
 
             containerPanel.append(containerTitle,containerDetails, containerDueDate, containerPriority); 
@@ -170,6 +127,7 @@ const inputData = (function() {
             const containerEditButton = document.createElement('div'); 
             containerEditButton.classList.add('container-edit');
             const editButton = document.createElement('button'); 
+            editButton.classList.add('edit-button');  ;   
             const iElementEditButton = document.createElement('i'); 
             iElementEditButton.classList.add('edit-button-icon'); 
             editButton.append(iElementEditButton); 
@@ -178,39 +136,81 @@ const inputData = (function() {
             const containerDeleteButton = document.createElement('div');
             containerDeleteButton.classList.add('container-delete');
             const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-button');
             const iElementDeleteButton = document.createElement('i');
             iElementDeleteButton.classList.add('delete-button-icon');
             deleteButton.append(iElementDeleteButton);
             containerDeleteButton.appendChild(deleteButton); 
         
             containerPanel.append(containerEditButton, containerDeleteButton); 
-            mainPage.appendChild(containerPanel); 
-        }
+            mainContainer.appendChild(containerPanel); 
+   }
+
+    const panelCreationUpcomingEvents = function(){
+                const mainPage = document.querySelector('div#main-window'); 
+                const arrayWeek = (eachDayOfInterval({start: new Date(), end: addDays(new Date(), 7)})).map(date => format(date, 'dd/MM/yyyy'));
+                for(let i = 0; i < arrayWeek.length; i++) {
+                    const containerDateInformation = document.createElement('div');
+                    containerDateInformation.setAttribute('class', 'container-date-information');
+         
+                    const dateInformation = document.createElement('div'); 
+                    dateInformation.setAttribute('class', 'date-information'); 
+                    dateInformation.textContent = arrayWeek[i];
+                    
+                    
+         
+                    const containerTasks = document.createElement('div'); 
+                    containerTasks.setAttribute('class', 'container-task'); 
+
+                   
+         
+                    containerDateInformation.append(dateInformation, containerTasks);
+
+                    mainPage.appendChild(containerDateInformation); 
+
+                    inputData.displayObjectInElement(arrayWeek[i], containerTasks); 
+                 }
+            
     }
 
+    
 
-    const getAndCreate = function(){
-        getPriorityStatus(); 
-        createTaskAndPanelOrder(); 
+    const addDataNumber = function(){
+            const deleteButtons = document.querySelectorAll('button.delete-button'); 
+            const doneButtons = document.querySelectorAll('input.check-button'); 
+            const editButtons = document.querySelectorAll('button.edit-button');
+        
+
+        deleteButtons.forEach((button, index)=> {
+                button.setAttribute('data-number-button', index);
+
+        })
+
+        doneButtons.forEach((button, index) => {
+                button.setAttribute('data-number-button-done', index); 
+        })
+
+        editButtons.forEach((button, index)=> {
+                button.setAttribute('data-number-button-edit', index); 
+        })
+
     }
 
-    const getAndCreateWithDate = function(){
-        getPriorityStatus();
-        createTaskAndPanelWithDateOrder()
+    const refreshInfo = function(title, details, date, priority, elementIndex){
+        const titleDiv = document.querySelectorAll('div.title');
+        const detailsDiv = document.querySelectorAll('div.details');
+        const dateDiv = document.querySelectorAll('div.due-date');
+        const priorityDiv = document.querySelectorAll('div.priority'); 
+
+
+        titleDiv[elementIndex].textContent = title;
+        detailsDiv[elementIndex].textContent = details;
+        dateDiv[elementIndex].textContent = date;
+        priorityDiv[elementIndex].textContent = priority; 
     }
 
-    return { Task, TaskWithDueDate, getAndCreate, getAndCreateWithDate }
-
-})(); 
-
-
-const storageData = (function(){
-        const tasks = [];
-        const tasksWithDueDate = []; 
-
-        return { tasks, tasksWithDueDate }
-})(); 
+    return { panelCreation, panelCreationInDate, panelCreationUpcomingEvents, addDataNumber, refreshInfo }
+})();
 
 
-
-export { inputData, storageData } 
+export default taskPanel

@@ -1,8 +1,28 @@
+/*
+ --accent-color-one:   #323232; 
+ --accent-color-two: #434343;
+
+ background-color: var(--accent-color-one);
+border:1px solid var(--accent-color-two);
+*/
+
 :root {
     --font-style: SourceSansProBlack;
-    --accent-color-one: black; 
-    --accent-color-two:grey;
-    --inbox-color: #bef59e;
+    --font-style-light: SourceSansProLight;
+    --accent-color-one:   #5b446a;
+    --accent-color-two: #906387;
+    --accent-color-darker: #3d2e47;
+    --accent-color-pink-brighter: #9c6b91; 
+    --accent-color-pink-more-bright: #d190c3; 
+    --inbox-color: #7dd87d;
+    --inbox-color-two: #4c9173; 
+    --inbox-color-lighter: #92fc92;
+    --color-normal-font: rgba(255, 255, 255, 0.92);
+    --color-today: #fa420f;
+    --color-today-light: #fc744e;
+    --low-priority: greenyellow; 
+    --mid-priority: yellow;
+    --high-priority: red;
 }
 
 @font-face {
@@ -10,16 +30,30 @@
     src: url('../components/main-page/SourceSansPro-Black.ttf');
 }
 
-body {
-    display: grid; 
-    height: calc(100vh - 5px);
-    grid-template-areas: "header   header   header  header"
-    "aside     main     main main "
-    "footer   footer   footer footer";
-    grid-template-rows: 70px auto 20px;
-    grid-template-columns: 200px repeat(3, 1fr);
+@font-face {
+    font-family: 'SourceSansProLight';
+    src: url('../components/main-page/SourceSansPro-Light.ttf');
 }
 
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+div.full-screen-div {
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: grid; 
+    grid-template-areas: "header   header   header  header"
+    "aside     main     main main ";
+    grid-template-rows: 7% 93%;
+    grid-template-columns: 152px repeat(3, 1fr);
+}
 
 header {
     grid-area: header;
@@ -29,13 +63,14 @@ header {
     width: 100%;
     height: 70px;
     background-color: var(--accent-color-one);
+    border:1px solid var(--accent-color-two);    
 }
 
 
 header div#logo-container {
   width: 100px;
   height: 25px;
-  margin: 50px;
+  margin: 25px;
 }
 
 header div#logo-container img {
@@ -49,26 +84,18 @@ aside {
     align-items: center;
     position: relative;
     grid-area: aside;
-    width: 200px;
+    width: 150px;
     height: 100%;
-    background-color:var(--accent-color-two);
+    background-color: var(--accent-color-one);
+    border:1px solid var(--accent-color-two);
+    border-top: none;
 }
 
-footer {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-    padding: 10px 0;
-    grid-area: footer;
-    width: 100%;
-    height: 5px;
-    background-color: var(--accent-color-one);  
-}
+
 
 main {
     grid-area: main;
+    height: 100%;
 }
 
 
@@ -83,34 +110,404 @@ div#action-buttons-container button{
     height: 100%;
 }
 
-main div#page-frame {
-
+main div.page-frame-home {
     background-color: var(--inbox-color);
     text-align: center;
     font-family: var(--font-style);
     height: 20px;
+    color: var(--accent-color-one);
+    letter-spacing: 2px;
+    border: 1px solid var(--inbox-color-lighter);
+}
+
+main div.page-frame-today {
+    background-color: var(--color-today);
+    text-align: center;
+    font-family: var(--font-style);
+    height: 20px;
+    color: var(--accent-color-one);
+    letter-spacing: 2px;
+    border: 1px solid var(--color-today-light);
+
+}
+
+main div.page-frame-upcoming{
+    background-color: var(--accent-color-pink-brighter);
+    text-align: center;
+    font-family: var(--font-style);
+    height: 20px;
+    color: var(--color-normal-font);
+    letter-spacing: 2px;
+    border: 1px solid var(--accent-color-pink-more-bright);
+}
+
+main div.main-window-home {
+    position: relative;
+    max-width: calc (100% - 150px);
+    height: calc(100% - 20px);
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 9px ), repeating-linear-gradient( #caf9ca55, #caf9ca );
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    align-content: flex-start;
+}
+
+main div.main-window-today {
+    position: relative;
+    max-width: calc (100% - 150px);
+    padding: 30px;
+    height: calc(100% - 20px);
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 9px ), repeating-linear-gradient( #fad5ca55, #fad5ca );
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+main div.main-window-upcoming {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: calc (100% - 150px);
+    height: calc(100% - 20px);
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #ebd2fc55, #ebd2fc );
 }
 
 aside div#navigation-buttons-container {
     font-family: var(--font-style);
+    text-decoration: none;
 }
 
-div#form-task {
-    position: absolute;
-    background-color: blue;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
+aside div#navigation-buttons-container nav ul li {
+    padding: 10px;
+    text-align: center;
 }
+
+aside div#navigation-buttons-container nav ul li a.navigation-buttons {
+    text-decoration: inherit;
+    color: var(--color-normal-font);
+
+}
+
+aside div#navigation-buttons-container nav ul li a:hover {
+    text-decoration: underline var(--inbox-color) 5px;
+
+}
+
+aside div#navigation-buttons-container nav ul li a#button-today:hover {
+    text-decoration: underline var(--color-today) 5px;
+}
+
+aside div#action-buttons-container button#new-task {
+    position:relative; 
+    margin-left: 25px;
+    width: 100px; 
+    background-color: var(--inbox-color);
+    border-radius: 3px;
+    border-style: none;
+    border: 1px solid var(--inbox-color-lighter);
+}
+
+aside div#action-buttons-container button#new-task:hover {
+    background-color: var(--inbox-color-two);
+    border: 1px solid var(--inbox-color);
+}
+
 
 div.page-dimmer{
     display: none;
-    width: 100vw;
-    height: 100vh;
+}
+
+div.page-dimmer-activated{
+    display: block;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
     background-color:hsla(0, 0%, 0%, 0.59);
     position: absolute;
 }
 
 textarea {
     resize: none;
+}
+
+div.shadow-box::after {
+    width: 500px;
+    height: 350px;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 36.5%;
+    left: 35.8%;
+    border-radius: 5px;
+    background: linear-gradient(236deg, rgba(76,145,115,1) 0%, rgba(125,216,125,1) 62%);
+  }
+
+  div#form-task form#formAddTask {
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    width: 500px;
+    height: 350px;
+    background-color: var(--accent-color-one);
+    color: var(--color-normal-font);
+    font-family: var(--font-style);
+    display: grid;
+    grid-template-rows: repeat(1fr, 5);
+    align-items: center;
+    border-radius: 5px;
+    z-index: 2;
+    border:1px solid var(--accent-color-two); 
+}
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(1), div.formElementContainer:nth-child(2){
+    color: var(--color-normal-font);
+    padding: 10px;
+    display: grid;
+    grid-template-rows: repeat(1fr, 2);
+}
+
+div.formElementContainer:nth-child(1) label, div.formElementContainer:nth-child(2) label {
+    padding: 5px;
+    border:1px solid var(--accent-color-one); 
+    width: fit-content;
+    background-color: #3d2e47;
+    border-start-start-radius: 10px;
+    border-start-end-radius:  10px;
+}
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(3), div#form-task form#formAddTask div.formElementContainer:nth-child(4){
+    color: var(--color-normal-font);
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-color-darker);
+    height: 30px;
+    margin: 0 10px; 
+    border: 1px solid var(--accent-color-two); 
+    border-radius: 3px;
+    padding: 10px;
+    
+}
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(3) input[type='radio']{
+    display: none;
+}
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(3) label{
+    border: 1px solid var(--inbox-color); 
+    color: var(--inbox-color); 
+    padding: 5px;
+    margin: 3px;
+    width: 30px; 
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+ div.formElementContainer:nth-child(3) label.due-date-choice:hover{
+    background-color: var(--inbox-color);
+    color:var(--accent-color-one) !important; 
+}
+
+input[name="dueDateElection"]:checked + label{
+    background-color: var(--inbox-color) !important; 
+    color: var(--accent-color-one) !important;
+}
+
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(3) div.formElementContainer {
+    border: none;
+    flex-grow: 1;
+    visibility: hidden;
+    border: none;
+    
+}
+
+
+div.dueDateElection input {
+    margin : 0 auto;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: var(--accent-color-two);
+    border: none;
+    border-radius: 3px;
+    font-family: var(--font-style-light);
+    
+}
+
+
+div.priorty-choice-container{
+    display: flex; 
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+
+div.formElementContainer:nth-child(3) legend, label, div.dueDateElection,div.formElementContainer:nth-child(4), legend, label {
+    padding: 0px 5px;
+}
+
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(4) input[name='priority'] {
+    display: none;
+}
+
+div.formElementContainer:nth-child(4) label.priority-choice{
+    color: var(--inbox-color); 
+    padding: 5px;
+    margin:3px 3px 3px 10px;
+    width: max-content; 
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.formElementContainer:nth-child(4) label[for='low-button']{
+    color: var(--low-priority); 
+    border: 1px solid var(--low-priority); 
+}
+
+div.formElementContainer:nth-child(4) label[for='low-button']:hover, input[id="low-button"]:checked + label {
+    color: var(--accent-color-one) !important; 
+    background-color: var(--low-priority);
+}
+
+
+div.formElementContainer:nth-child(4) label[for='medium-button']{
+    color: var(--mid-priority);
+    border: 1px solid var(--mid-priority);
+}
+
+div.formElementContainer:nth-child(4) label[for='medium-button']:hover, input[id="medium-button"]:checked + label{
+    color: var(--accent-color-one) !important;
+    background-color:var(--mid-priority);
+}
+
+div.formElementContainer:nth-child(4) label[for='high-button']{
+    color:var(--high-priority);
+    border: 1px solid var(--high-priority);
+}
+
+div.formElementContainer:nth-child(4) label[for='high-button']:hover, input[id="high-button"]:checked + label {
+    color: var(--accent-color-one) !important;
+    background-color: var(--high-priority);
+}
+
+
+div#form-task form#formAddTask div.formElementContainer:nth-child(5) {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+div.formElementContainer:nth-child(5) input {
+    margin: 5px;
+    width: 100px;
+    height: 30px;
+    background-color: var(--accent-color-one);
+    border-radius: 3px;
+    border: 1px solid var(--accent-color-two) !important;
+    font-family: var(--font-style);
+    color: var(--color-normal-font);
+    outline: none;
+}
+
+div.formElementContainer:nth-child(5) input:hover {
+    background-color: var(--accent-color-darker);
+    border: 1px solid var(--accent-color-pink-brighter);
+}
+
+input#title, textarea {
+    background-color: var(--accent-color-two);
+    border: 1px solid var(--accent-color-pink-brighter);    
+    border-radius: 3px;
+    color: var(--color-normal-font); 
+    font-family: var(--font-style-light);
+    font-size: 14px;
+}
+
+input#title:focus, textarea:focus, input#due-date {
+    outline: none !important;
+    border: 1px solid var(--inbox-color); 
+}
+
+div.container-panel {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: white; 
+    margin: 10px;
+    border: 3px solid var(--inbox-color);
+    border-radius: 5px;
+}
+
+div#main-window div.task-panel-done {
+    display: flex; 
+    width: 100%;
+    height: 50px;
+    background-color: grey; 
+    margin: 10px;
+    border: 3px solid grey;
+    border-radius: 5px;
+    
+}
+
+button.confirm-edit-button{
+    background-color: red;
+}
+
+.edit-button-icon {
+    content: url(../components/tasks-panel/edit-png.png);
+    pointer-events: none;
+}
+
+
+
+
+.delete-button-icon {
+    content: url(../components/tasks-panel/baseline_delete_black_24dp.png);
+    pointer-events: none;
+    
+}
+
+div.container-date-information{
+    height: 14%;
+}
+
+div.container-date-information div.date-information{
+    text-align: center;
+    font-family: var(--font-style-light);
+    color: var(--color-normal-font);
+    background-color: var(--accent-color-one);
+    border: 1px solid var(--accent-color-pink-brighter);
+}
+
+div.container-date-information div.container-task{
+    position: relative;
+    height: 100%;
+    max-width: calc(100% - 110px);
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+div.container-panel-mini {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    background-color: white; 
+    border: 3px solid var(--inbox-color);
+    border-radius: 5px;
 }

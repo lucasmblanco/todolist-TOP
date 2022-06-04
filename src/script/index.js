@@ -1,5 +1,9 @@
 import '/src/css/reset.css';
 import '/src/css/style.css';
-import { formFunctionality } from './interface-functionality.js';
+import asidePanel from './aside-panel/aside-panel-functionality.js'
 
-formFunctionality.readyToShowForm(); 
+
+asidePanel.asidePanelButtonsFunctionality(); 
+
+
+
