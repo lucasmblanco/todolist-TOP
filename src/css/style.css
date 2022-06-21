@@ -535,13 +535,9 @@ button.confirm-edit-button{
     pointer-events: none;
 }
 
-
-
-
 .delete-button-icon {
     content: url(../components/tasks-panel/baseline_delete_black_24dp.png);
     pointer-events: none;
-    
 }
 
 div.container-date-information{
