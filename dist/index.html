@@ -30,8 +30,8 @@
                 <button id="new-project">+</button>
             </div>
             <div id="projects-container">
-            <nav>
-                <ul></ul>
+            <nav id="navigation-projects">
+                <ul id="projects-list"></ul>
             </nav>
         </div>
         </div>
@@ -43,7 +43,7 @@
     <div class="page-dimmer">
     <div id="form-task">
         <div class="shadow-box">
-        <form id="formAddTask">
+        <form id="formAddTask" class="form-add-task">
             <div class="formElementContainer">
                 <label for="title">Title</label>
                 <input id='title' type="text" required>
@@ -75,10 +75,30 @@
             </div>
             <div class="formElementContainer">
             <input id="button-add-task"type="submit" value="Add Task">
-            <input id="button-cancel-form" type="button"  id="cancel-form" value="Cancel">
+            <input id="button-cancel-form" type="button" value="Cancel">
             </div>
         </form>
     </div>
+    </div>
+    <div class="container-form-project">
+        <div class="shadow-box-form-projects">   
+        <form id="form-projects" class="form-projects">
+            <div class="form-element-container-p">
+                <label for='title-project'>Title</label>
+                <input id='title-project' type="text" required>
+            </div>
+            <div class="form-element-container-p color-picker-container">
+                <div class="button-container-color-picker">
+                <div id="color-picker">Choose a color</div></div>
+                <div class="container-colors">
+                    </div> 
+            </div>
+            <div class="form-element-container-p">
+                <input id="button-add-project"type="submit" value="Create Project">
+                <input id="button-cancel-form-project" type="button" value="Cancel">
+                </div>
+        </form>
+    </div> 
     </div>
     </div>
 </div>

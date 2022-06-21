@@ -1,20 +1,44 @@
-import {formBehaviors} from "./form-behavior";
-import formStyle from "./form-styling";
+import form from "../form-functionality";
 
 const actionCloseForm = (function(){
     const cancelButton = document.querySelector('#button-cancel-form'); 
+
     const cancelButtonFunctionality = function(){
          cancelButton.addEventListener('click', closeForm); 
     }
 
     function closeForm(e){
         e.preventDefault();
-        formBehaviors.resetForm();
-        formStyle.deactivateInitialComponentsStyle(); 
-        
+        form.initialDefaultParameters();
+        form.deactivateDisplayValues();  
+        form.enableSecondaryForm();
     }
 
     return { cancelButtonFunctionality }
 })(); 
 
-export default actionCloseForm
+
+// -- PROJECT FORM --
+
+const actionCloseFormProject = (function(){
+
+    const cancelButton = document.querySelector('#button-cancel-form-project');
+    const formProject = document.querySelector('form#form-projects');
+
+    const cancelButtonFunctionality = function(){
+        cancelButton.addEventListener('click', closeForm); 
+    }
+
+    function closeForm(e){
+        e.preventDefault();
+        formProject.reset(); 
+        form.deactivateDisplayValues();
+        form.activateMainForm(); 
+    }
+
+    return { cancelButtonFunctionality }
+
+})()
+
+
+export {actionCloseForm, actionCloseFormProject} 

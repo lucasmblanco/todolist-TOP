@@ -1,6 +1,6 @@
 import mainWindow from "../../main-panel/main-panel-components/main-window";
 import pageFrameElement from "../../main-panel/main-panel-components/page-frame";
-import inputData from "../../data-managment/components/data-catcher";
+import {inputData} from "../../data-managment/components/data-catcher";
 
 const todayButtonFunctionality = (function(){
     const buttonToday = document.querySelector('a#button-today');
@@ -19,13 +19,11 @@ const todayButtonFunctionality = (function(){
 
 
     const displayTodayTasks = function(){
-        
-       while(mainPage.firstChild && mainPage.removeChild(mainPage.firstChild));
-
-        // array con task con fecha 
-
         inputData.displayAllObjectWithTodayDate(); 
-
+        const panelDates = document.querySelectorAll('div.container-date-information');
+        panelDates.forEach(panel => panel.remove()); 
+       
+        
     }
 
 

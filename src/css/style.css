@@ -141,6 +141,16 @@ main div.page-frame-upcoming{
     border: 1px solid var(--accent-color-pink-more-bright);
 }
 
+main div.page-frame-project{
+    background-color: grey;
+    text-align: center;
+    font-family: var(--font-style);
+    height: 20px;
+    color: var(--color-normal-font);
+    letter-spacing: 2px;
+    border: 1px solid var(--accent-color-pink-more-bright);
+}
+
 main div.main-window-home {
     position: relative;
     max-width: calc (100% - 150px);
@@ -177,6 +187,17 @@ main div.main-window-upcoming {
     opacity: 1;
     background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #ebd2fc55, #ebd2fc );
 }
+
+main div.main-window-project{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: calc (100% - 150px);
+    height: calc(100% - 20px);
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #ebd2fc55, #ebd2fc);
+} 
 
 aside div#navigation-buttons-container {
     font-family: var(--font-style);
@@ -248,7 +269,15 @@ div.shadow-box::after {
     background: linear-gradient(236deg, rgba(76,145,115,1) 0%, rgba(125,216,125,1) 62%);
   }
 
-  div#form-task form#formAddTask {
+div.disable-shadow-box-form{
+    display: none;
+}
+
+form.disable-form {
+    display: none;
+}
+
+div#form-task form.form-add-task{
     position: absolute;
     top: 35%;
     left: 35%;
@@ -263,6 +292,36 @@ div.shadow-box::after {
     border-radius: 5px;
     z-index: 2;
     border:1px solid var(--accent-color-two); 
+}
+
+div.shadow-box-form-projects::after {
+    width: 500px;
+    height: 150px;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 36.4%;
+    left: 35.8%;
+    border-radius: 5px;
+    background: rgb(76,145,144);
+    background: linear-gradient(228deg, rgba(76,145,144,1) 0%, rgba(125,216,215,1) 70%);
+}
+
+form.form-projects{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    width: 500px;
+    height: 150px;
+    background-color: var(--accent-color-one);
+    color: var(--color-normal-font);
+    font-family: var(--font-style);
+    display: grid;
+    grid-template-rows: repeat(1fr, 5);
+    align-items: center;
+    border-radius: 5px;
+    z-index: 2;
+    border:1px solid var(--accent-color-two);
 }
 
 div#form-task form#formAddTask div.formElementContainer:nth-child(1), div.formElementContainer:nth-child(2){
@@ -510,4 +569,65 @@ div.container-panel-mini {
     background-color: white; 
     border: 3px solid var(--inbox-color);
     border-radius: 5px;
+}
+
+.panel-disabled{
+    display: none !important; 
+}
+
+.container-colors-hidden{
+    display: none !important; 
+}
+
+.container-colors-active{
+    display: inline-block;
+    position: absolute;
+    background-color: white;
+    height: 100px;
+    width: 100px;
+}
+
+.option-color-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 16px;  
+}
+
+.color-circle{
+    position: relative;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.color-name{
+    position: relative;
+    width: 50px;
+    height: 16px;
+    color: black;
+}
+
+
+div#projects-container{
+    display: relative;
+    width: 150px;
+    height: 500px;
+    background-color: white;
+}
+
+.project-element{
+    display: relative;
+    width: 100%;
+    height: 20px;
+}
+
+i.edit-project-icon{
+    content: url(../components/tasks-panel/edit-png.png);
+    pointer-events: none;
+}
+
+i.delete-project-icon{
+    content: url(../components/tasks-panel/baseline_delete_black_24dp.png);
+    pointer-events: none;
 }
