@@ -526,6 +526,10 @@ button.confirm-edit-button{
     background-color: red;
 }
 
+.header-image{
+    content: url(../components/main-page/todo-logo.png); 
+}
+
 .edit-button-icon {
     content: url(../components/tasks-panel/edit-png.png);
     pointer-events: none;
