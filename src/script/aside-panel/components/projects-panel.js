@@ -71,10 +71,7 @@ const projectsPanel = (function(){
 
     function editPanel(project, projectNumber){
       const indexOfProject = projectNumber; 
-        
-        
-
-        const projectElements = document.querySelectorAll('li.project-element');
+      const projectElements = document.querySelectorAll('li.project-element');
 
         projectElements[projectNumber].setAttribute('data-number-project', indexOfProject);
         projectElements[projectNumber].textContent = project._listName;
@@ -123,8 +120,7 @@ const projectsPanel = (function(){
 
     }
 
-    function deleteProjectFunctionality(e){
-        console.log('hola'); 
+    function deleteProjectFunctionality(e){ 
         const projects = inputDataProject.projects;
         const projectsListElements = document.querySelectorAll('li.project-element'); 
         const mainPage = document.querySelector('div#main-window');
@@ -135,11 +131,8 @@ const projectsPanel = (function(){
         addDataNumberToProjects(); 
         addDataNumberOfProject(); 
 
-        mainPage.classList.remove(...mainPage.classList); 
-
-       // if(!(e.target.dataset.numberProject === 0)) projectsListElements.forEach(element => element.setAttribute('data-number-project', e.target.dataset.numberProject)) 
-        
-
+        mainPage.classList.remove(...mainPage.classList);
+    
     }
 
     function panelOnClickFunctionality(){

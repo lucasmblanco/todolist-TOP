@@ -88,8 +88,7 @@ const actionAddColor = (function(){
            // formProject.addEventListener('click', closeMenu); 
         })
 
-       
-    }
+}
 
 
 

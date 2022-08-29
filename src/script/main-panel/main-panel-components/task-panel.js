@@ -6,9 +6,6 @@ const taskPanel = (function(){
             const containerPanel = document.createElement('div');
             containerPanel.classList.add('container-panel'); 
 
-           
-
-
             const containerTitle = document.createElement('div'); 
             containerTitle.classList.add('container-title'); 
             const titleDiv = document.createElement('div');
@@ -39,12 +36,9 @@ const taskPanel = (function(){
 
             containerPanel.append(containerTitle, containerDetails, containerDueDate, containerPriority); 
 
-                if(!(mainPage.classList.contains('main-window-today'))) mainPage.appendChild(containerPanel);
-                if(mainPage.getAttribute('data-date') === date) mainPage.appendChild(containerPanel); 
+            if(!(mainPage.classList.contains('main-window-today'))) mainPage.appendChild(containerPanel);
+            if(mainPage.getAttribute('data-date') === date) mainPage.appendChild(containerPanel); 
                
-            
-            
-
             const containerCheckButton = document.createElement('div');
             containerCheckButton.classList.add('container-check'); 
         
@@ -54,8 +48,7 @@ const taskPanel = (function(){
             containerCheckButton.append(checkButton); 
         
             containerPanel.insertBefore(containerCheckButton, containerTitle); 
-        
-        
+            
             const containerEditButton = document.createElement('div'); 
             containerEditButton.classList.add('container-edit');
         
@@ -87,11 +80,8 @@ const taskPanel = (function(){
                 deleteButton.disabled = true; 
             } 
 
-
             containerPanel.append(containerEditButton, containerDeleteButton); 
 
-            
-        
     }
 
     const panelCreationUpcomingEvents = function(){
