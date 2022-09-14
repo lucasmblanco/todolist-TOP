@@ -24,9 +24,11 @@
             </nav>
         </div>
         <div id="projects-section">
-            <div class="title-project">Projects</div>
+            <div class="project-start-container">
+            <div class="title-project">PROJECTS</div>
             <div class="new-project-button-container">
                 <button id="new-project">+</button>
+            </div>
             </div>
             <div id="projects-container">
             <nav id="navigation-projects">
@@ -45,11 +47,11 @@
         <form id="formAddTask" class="form-add-task">
             <div class="formElementContainer">
                 <label for="title">Title</label>
-                <input id='title' type="text" required>
+                <input id='title' type="text" maxlength="25" required>
             </div>
             <div class="formElementContainer">
                 <label for="Details">Details</label>
-                <textArea id="details"></textArea>
+                <textArea id="details" maxlength="135"></textArea>
             </div>
             <div class="formElementContainer">
                 <legend>Due Date</legend>
@@ -64,11 +66,11 @@
            <div class="formElementContainer">
                 <legend>Priority</legend>
                 <div class="priorty-choice-container">
-                <input type="radio" name="priority" class="priority-task" value="low" id="low-button">
+                <input type="radio" name="priority" class="priority-task" value="Low" id="low-button">
                 <label for="low-button" class="priority-choice">Low</label><br>
-                <input type="radio" name="priority" class="priority-task" value="medium" id="medium-button">
+                <input type="radio" name="priority" class="priority-task" value="Medium" id="medium-button">
                 <label for="medium-button" class="priority-choice">Medium</label><br>
-                <input type="radio" name="priority" class="priority-task" value="high" id="high-button">
+                <input type="radio" name="priority" class="priority-task" value="High" id="high-button">
                 <label for="high-button" class="priority-choice">High</label><br>
             </div>
             </div>
@@ -82,9 +84,9 @@
     <div class="container-form-project">
         <div class="shadow-box-form-projects">   
         <form id="form-projects" class="form-projects">
-            <div class="form-element-container-p">
-                <label for='title-project'>Title</label>
-                <input id='title-project' type="text" required>
+            <div class="form-element-container-p container-title-project-input">
+                <label for='title-project' class="title-project">Title</label>
+                <input id='title-project' type="text" maxlength="25" required>
             </div>
             <div class="form-element-container-p color-picker-container">
                 <div class="button-container-color-picker">
@@ -92,9 +94,9 @@
                 <div class="container-colors">
                     </div> 
             </div>
-            <div class="form-element-container-p">
-                <input id="button-add-project"type="submit" value="Create Project">
-                <input id="button-cancel-form-project" type="button" value="Cancel">
+            <div class="form-element-container-p form-add-task-project">
+                <input id="button-add-project" class="form-add-task-project" type="submit" value="Create Project">
+                <input id="button-cancel-form-project" class="form-add-task-project" type="button" value="Cancel">
                 </div>
         </form>
     </div> 
