@@ -10,7 +10,6 @@ const newProject = (function(){
 
     function buttonFunctionality(){
         form.initialDisplayValues(); 
-        form.initialDefaultParametersFormAddProject();
         form.disableMainForm();
         form.formProjectButtonsFunctionality(); 
     }

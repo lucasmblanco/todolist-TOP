@@ -23,10 +23,8 @@ border:1px solid var(--accent-color-two);
     --low-priority: greenyellow; 
     --mid-priority: yellow;
     --high-priority: red;
-    --color-button-project: rgb(125, 216, 215);
-    --color-button-project-light: #4AF3F3; 
-    --color-button-project-darker: rgba(76,145,144,1);
-    --color-background-panel: #e8fee8
+    --color-button-project: orange;
+    --color-button-project-light: #ebe714; 
 }
 
 @font-face {
@@ -308,7 +306,7 @@ div.shadow-box-form-projects::after {
     left: 35.8%;
     border-radius: 5px;
     background: rgb(76,145,144);
-    background: linear-gradient(228deg, rgba(76,145,144,1) 0%, rgb(125, 216, 215) 70%);
+    background: linear-gradient(228deg, rgba(76,145,144,1) 0%, rgba(125,216,215,1) 70%);
 }
 
 form.form-projects{
@@ -507,112 +505,23 @@ input#title:focus, textarea:focus, input#due-date {
 
 div.container-panel {
     display: flex;
-    align-items: center;
     width: 100%;
     height: 50px;
-    background-color: var(--color-background-panel); 
+    background-color: white; 
     margin: 10px;
     border: 3px solid var(--inbox-color);
     border-radius: 5px;
-    font-family: var(--font-style);
-}
-
-
-div.container-check{
-    width: 10%;
-    padding: 3px;
-}
-
-div.container-title{
-   width: 20%;
-   text-align: left;
-}
-
-div.container-details{    
-    width: 30%;
-    text-align: left;
-    font-family: var(--font-style-light);
-    overflow: auto;
-}
-
-div.details{
-    word-break: break-all;
-    padding: 3px 0;
-}
-
-div.container-duedate{
-    width: 15%;
-    text-align: center;
-}
-
-div.container-priority{
-    width: 15%;
-    text-align: center;
-    padding: 5px 5px;
-    
-}
-
-div.container-priority div.priority{
-    width: 50%;
-    border: 1px solid black;
-}
-
-div.container-edit{
-    width: 5%;
-}
-
-div.container-edit button.edit-button{
-    border: none;
-    background-color: #92fc92;
-    border-radius: 3px;
-    border: 1px solid #92fc92;
-    
-}
-
-div.container-edit button.edit-button:hover{
-    border: 1px solid #7dd87d
-}
-
-div.container-delete{
-    width: 5%;
-}
-
-div.container-delete button.delete-button{
-    border: none;
-    background-color: #92fc92;
-    border-radius: 3px;
-    border: 1px solid #92fc92;
-}
-
-div.container-delete button.delete-button:hover{
-    border: 1px solid #7dd87d;
 }
 
 div#main-window div.task-panel-done {
     display: flex; 
     width: 100%;
     height: 50px;
-    background-color: #D3D8EB; 
+    background-color: grey; 
     margin: 10px;
-    border: 3px solid #D3D8EB;
+    border: 3px solid grey;
     border-radius: 5px;
-    text-decoration: line-through;
-    color: #BABECF;
     
-}
-
-div#main-window div.task-panel-done button{
-    background-color: #D3D8EB;
-    border: #D3D8EB;
-}
-
-div#main-window div.task-today button{
-    background-color: var(--color-today);
-    border: 1px solid var(--color-today);
-}
-
-div#main-window div.task-today button:hover{
-    background-color: var(--color-today-light);
 }
 
 button.confirm-edit-button{
@@ -647,12 +556,12 @@ div.container-date-information div.date-information{
 
 div.container-date-information div.container-task{
     position: relative;
-    height: 86%;
+    height: 100%;
+    max-width: calc(100% - 110px);
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    overflow-y: scroll;
-    padding: 0 30px; 
 }
 
 div.container-panel-mini {
@@ -673,12 +582,11 @@ div.container-panel-mini {
 }
 
 .container-colors-active{
-    display: block;
+    display: inline-block;
     position: absolute;
-    background-color: transparent;
-    height: 240px;
-    width: 160px;
-    
+    background-color: white;
+    height: 100px;
+    width: 100px;
 }
 
 .option-color-container {
@@ -686,7 +594,6 @@ div.container-panel-mini {
     position: relative;
     width: 100%;
     height: 16px;  
-    border-radius: 3px;
 }
 
 .color-circle{
@@ -720,84 +627,34 @@ div#projects-container{
 i.edit-project-icon{
     content: url(../components/tasks-panel/edit-png.png);
     pointer-events: none;
+    font-size: 5px;
 }
 
 i.delete-project-icon{
     content: url(../components/tasks-panel/baseline_delete_black_24dp.png);
     pointer-events: none;
+    font-size: 5px;
 }
-
-div#color-picker{
-    background-color: var(--accent-color-one);
-    border:1px solid var(--color-button-project-light); 
-    color: var(--color-button-project-light);
-    width: 150px;
-    text-align: center;
-    padding: 5px;
-    border-radius: 3px;
-}
-
-div#color-picker:hover{
-    background-color: var(--color-button-project-light);
-    color: var(--accent-color-one);
-    border: 1px solid var(--color-button-project-light)
-}
-
-div.color-picker-container{
-    height: auto;
-    margin: 0 auto;
-    padding: 7px;    
-}
-
-div.color-picker{
-    color: var(--accent-color-one);
-    width: 150px;
-    text-align: center;
-    padding: 5px;
-    border-radius: 3px;
-}
-
-label.color-name{
-    width: 100%;
-    text-align: left;
-    color: var(--color-normal-font);
-    font-family: var(--font-style-light);
-    font-size: 14px;
-}
-
-div.option-color-container{
-    width: 150px;
-    text-align: left;
-    padding: 5px;
-    margin: 2px;
-}
-
-
 
 div.new-project-button-container{
-    padding:10px;
- }
- 
- 
- div.title-project{
-     font-family: var(--font-style);
-     color: var(--color-button-project);
- }
+   padding:10px;
+}
 
- button#new-project {
+
+div.title-project{
+    font-family: var(--font-style);
+    color: var(--color-button-project);
+}
+
+button#new-project {
     position:relative; 
     width: 100px; 
     background-color: var(--color-button-project);
     border-radius: 3px;
     border-style: none;
     border: 1px solid var(--color-button-project-light);
-    font-weight: bold;
 } 
 
-button#new-project:hover{
-    background-color: var(--color-button-project-darker);
-    border: 1px solid var(--color-button-project);
-}
 div.project-start-container{
     padding: 10px;
     text-align: center;
@@ -825,6 +682,7 @@ li.project-element{
     height: 70px;
     border: 3px;
     margin: 0.1px;
+
 }
 
 li.project-element button{
@@ -839,88 +697,5 @@ li.project-element div.project-name{
     text-align: center;
     flex: 0 1 100%;
     font-size: 16px; 
-    pointer-events: none;
-}
-
-form.form-projects label.title-project{
-    padding: 5px;
-    border:1px solid var(--accent-color-one); 
-    width: fit-content;
-    background-color: #3d2e47;
-    border-start-start-radius: 10px;
-    border-start-end-radius:  10px;
-    margin: 0 15px;
-}
-
-div.container-title-project-input{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 6px 0 ;
-}
-
-input#title-project{
-    background-color: var(--accent-color-two);
-    border: 1px solid var(--accent-color-pink-brighter);    
-    border-radius: 3px;
-    color: var(--color-normal-font); 
-    font-family: var(--font-style-light);
-    font-size: 14px;
-    margin: 0 15px;
-}
-
-input#title-project:focus {
-    outline: none !important;
-    border: 1px solid var(--color-button-project-light); 
-}
-
-input.form-add-task-project{
-    margin: 0 5px;
-    width: 100px;
-    height: 30px;
-    background-color: var(--accent-color-one);
-    border-radius: 3px;
-    border: 1px solid var(--accent-color-two) !important;
-    font-family: var(--font-style);
-    color: var(--color-normal-font);
-    outline: none;
-}
-
-input.form-add-task-project:hover {
-    background-color: var(--accent-color-darker);
-    border: 1px solid var(--accent-color-pink-brighter);
-}
-
-div.form-add-task-project{
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-div.container-panel div.Medium{
-    color: var(--mid-priority);
-    border-color: var(--mid-priority);
-}
-
-div.container-panel div.Low{
-    color: var(--low-priority);
-    border-color: var(--low-priority);
-}
-
-div.container-panel div.High{
-    color: var(--high-priority);
-    border-color: var(--high-priority);
-}
-
-div.task-today{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: var(--color-today-light); 
-    margin: 10px;
-    border: 3px solid var(--color-today);
-    border-radius: 5px;
-    font-family: var(--font-style);
 }
 

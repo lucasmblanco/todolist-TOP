@@ -32,7 +32,6 @@ const actionCloseFormProject = (function(){
     function closeForm(e){
         e.preventDefault();
         formProject.reset(); 
-        
         form.deactivateDisplayValues();
         form.activateMainForm(); 
     }

@@ -15,9 +15,12 @@ const upComingButtonFunctionality = (function(){
     function buttonFunctionality() {
         if(mainPage.classList.contains('main-window-upcoming')) return
         pageFrameElement.pageFrameStyleUpcoming();
-        mainWindow.mainWindowStyleUpcoming();
+        mainWindow.mainWindowStyleUpcoming(); 
+        
         taskPanel.panelCreationUpcomingEvents();    
         inputData.displayObjectInElement();
+
+       // mainWindow.refreshStatus(); 
     }
 
 

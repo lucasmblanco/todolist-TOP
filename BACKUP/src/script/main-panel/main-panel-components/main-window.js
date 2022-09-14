@@ -1,4 +1,6 @@
 import { format } from "date-fns";
+import taskPanel from '../../main-panel/main-panel-components/task-panel';
+import { inputData } from '../../data-managment/components/data-catcher';
 
 const mainWindow = (function(){
     const todayInfoDate = format(new Date(), 'dd/MM/yyyy'); 

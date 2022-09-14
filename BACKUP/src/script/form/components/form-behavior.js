@@ -36,6 +36,10 @@ const formBehaviors = (function(){
       const detailsTextarea = document.querySelector('textarea#details'); 
       const dateInput = document.querySelector('input#due-date'); 
 
+     // console.log(containerNumber); 
+     // console.log(inputDataProject.projects); 
+
+      //console.log(inputDataProject.projects[containerNumber]); 
 
       form.setAttribute('data-number-container-edit', taskNumber);
 
@@ -48,7 +52,7 @@ const formBehaviors = (function(){
       priorityInputBehavior.EditStatus((inputDataProject.projects[containerNumber].allItems())[taskNumber].priority); 
    }
 
-    const loadEditValuesProjects = function(projectNumber){
+   const loadEditValuesProjects = function(projectNumber){
      
     const titleProject = document.querySelector('input#title-project'); 
     const allInputColors = document.querySelectorAll('div.input-checkbox-color'); 
@@ -56,13 +60,9 @@ const formBehaviors = (function(){
     const containerColorPickerLastChild = containerColorPicker.lastChild; 
     const colorPickerParent = containerColorPickerLastChild.parentNode; 
 
-    //console.log(containerColorPickerLastChild);
-   // console.log(colorPickerParent); 
-
     formProjects.setAttribute('data-number-project-edit', projectNumber);
 
     titleProject.value = inputDataProject.projects[projectNumber]._listName;
-
     allInputColors.forEach(function(input){
       if(input.value === inputDataProject.projects[projectNumber]._themeColor){
         colorPickerParent.replaceChild(input.parentNode, containerColorPickerLastChild); 
@@ -73,11 +73,7 @@ const formBehaviors = (function(){
 
 
    }
-
-   const resetAddProjectForm = function(){
-    formProjects.reset(); 
-   }
-    return { resetForm, loadEditValues, loadEditValuesTaskProjects, loadEditValuesProjects, resetAddProjectForm }
+    return { resetForm, loadEditValues, loadEditValuesTaskProjects, loadEditValuesProjects }
 })();
 
 export { formBehaviors } 

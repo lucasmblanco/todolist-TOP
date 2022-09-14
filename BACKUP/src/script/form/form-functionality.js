@@ -21,10 +21,6 @@ const form = (function(){
         formBehaviors.resetForm(); 
     }
 
-    const initialDefaultParametersFormAddProject = function(){
-        formBehaviors.resetAddProjectForm(); 
-    }
-
     const EditFormParameters = function(containerNumber){
         formBehaviors.loadEditValues(containerNumber);
    }
@@ -103,7 +99,7 @@ const form = (function(){
         actionAddTask.numberProjectAddTask(number); 
     }
 
-return { initialDisplayValues, deactivateDisplayValues, initialDefaultParameters, formButtonsFunctionality, EditFormParameters, formEditButtonsFunctionality,         disableMainForm, activateMainForm, disableSecondaryForm, enableSecondaryForm, formProjectButtonsFunctionality,  formButtonsAddTaskInProject, addDataSetNumberToButtons, formEditButtonsFunctionalityOfProjects , EditFormParametersTaskProjects, editProjectsInformation, EditFormParametersProjects, initialDefaultParametersFormAddProject}
+return { initialDisplayValues, deactivateDisplayValues, initialDefaultParameters, formButtonsFunctionality, EditFormParameters, formEditButtonsFunctionality,         disableMainForm, activateMainForm, disableSecondaryForm, enableSecondaryForm, formProjectButtonsFunctionality,  formButtonsAddTaskInProject, addDataSetNumberToButtons, formEditButtonsFunctionalityOfProjects , EditFormParametersTaskProjects, editProjectsInformation, EditFormParametersProjects}
 })()
 
 export default form 

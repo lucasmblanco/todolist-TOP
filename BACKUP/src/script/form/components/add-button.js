@@ -1,6 +1,7 @@
 import {inputData, inputDataProject} from "../../data-managment/components/data-catcher";
 import form from "../form-functionality";
 import projectsPanel from "../../aside-panel/components/projects-panel";
+import panelsButtonsFunctionality from "../../main-panel/main-panel-components/task-panel-functionality";
 
 const actionAddTask = (function(){
     const formElement = document.querySelector('form#formAddTask');
@@ -43,7 +44,10 @@ const actionAddTask = (function(){
         form.enableSecondaryForm();
      }
  
+     // -- function que vuelve a estado original el form original y crea el panel en el window correcto   
      const addTaskToProjectFunctionality = function(){ 
+        //console.log(e.target.dataset.numberProject); 
+      //  e.preventDefault();
         formElement.removeEventListener('submit', updateTask);
         formElement.removeEventListener('submit', addNewTask); ///////////// remover los otros listeneeeeeeeeeeeeer\
         formElement.removeEventListener('submit', updateTaskInProject);
@@ -52,15 +56,19 @@ const actionAddTask = (function(){
 
      function addTaskToProject(e){
         e.preventDefault();
+      //  console.log(e.target); 
         inputDataProject.createTaskOfProject(e.target.dataset.numberProject); 
+        //form.de
         form.initialDefaultParameters(); 
         form.deactivateDisplayValues(); 
         form.enableSecondaryForm();
-      }
+        
+     }
 
      const numberProjectAddTask = function(number){
         const formId = document.querySelector('form#formAddTask'); 
-        formId.setAttribute('data-number-project', number);
+        formId.setAttribute('data-number-project', number)
+       // addButton.classList.add(number); 
      }
 
      const updateTaskButtonFunctionalityInProject = function(){
@@ -87,32 +95,38 @@ const actionAddTask = (function(){
 
 
 const actionAddProject = (function(){
-   const formElement = document.querySelector('form#form-projects');
-   const mainPage = document.querySelector('div#main-window');
+    const formElement = document.querySelector('form#form-projects');
+    const mainPage = document.querySelector('div#main-window');
+   // const formPanel = document.querySelectorAll('li.project-element'); 
    
-   const addProjectToList = function(){
+
+    const addProjectToList = function(){
       formElement.removeEventListener('submit', updateProject);
       formElement.addEventListener('submit', addNewProject)
-   }
+    }
 
-   function addNewProject(e){
-         while(mainPage.firstChild && mainPage.removeChild(mainPage.firstChild));
-         e.preventDefault();
-         form.deactivateDisplayValues(); 
-         form.activateMainForm(); 
-         const newProject = inputDataProject.createNewList();
-         projectsPanel.createPanel(newProject) // creo que el panel del project en aside
-         projectsPanel.addDataNumberToProjects();
-         projectsPanel.addDataNumberOfProject(); 
-         projectsPanel.panelOnClickFunctionality(); // agrega accion al click en el panel para cambiar de estilos
-         projectsPanel.panelStylingHomeFunctionality(newProject); // -- cambia el estilo segun el panel
-         projectsPanel.buttonsFunctionality(); // añade funcionamiento de los botones del panel 
+    function addNewProject(e){
+        
+        while(mainPage.firstChild && mainPage.removeChild(mainPage.firstChild));
+        e.preventDefault();
+        form.deactivateDisplayValues(); 
+        form.activateMainForm(); 
+        const newProject = inputDataProject.createNewList();
        
-   }
+        projectsPanel.createPanel(newProject) // creo que el panel del project en aside
+        projectsPanel.addDataNumberToProjects()
+        projectsPanel.addDataNumberOfProject(); 
+        projectsPanel.panelOnClickFunctionality(); // agrega accion al click en el panel para cambiar de estilos
+        projectsPanel.panelStylingHomeFunctionality(newProject); // -- cambia el estilo segun el panel
+        projectsPanel.buttonsFunctionality(); // añade funcionamiento de los botones del panel 
+       
+        
+        
+    }
 
-   const updateProjectInformation = function(){
-         formElement.removeEventListener('submit', addNewProject); 
-         formElement.addEventListener('submit', updateProject);
+    const updateProjectInformation = function(){
+      formElement.removeEventListener('submit', addNewProject); 
+      formElement.addEventListener('submit', updateProject);
    }
 
    function updateProject(e){
@@ -120,10 +134,14 @@ const actionAddProject = (function(){
       const editedProject = inputDataProject.grabNewProjectInfoAndSave(e.target.dataset.numberProjectEdit);
       form.deactivateDisplayValues(); 
       form.activateMainForm(); 
+
+     // projectsPanel.createPanel(editedProject);
+
       projectsPanel.editPanel(editedProject, e.target.dataset.numberProjectEdit); 
       projectsPanel.buttonsFunctionality();
       projectsPanel.panelStylingHomeFunctionality(editedProject);
       projectsPanel.panelOnClickFunctionality();
+      
    }
       
    

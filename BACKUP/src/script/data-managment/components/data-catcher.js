@@ -67,6 +67,7 @@ const inputData = (function() {
         (mainList.allItems()).forEach(function(item){ 
             
             mainList.showItemn(item)
+           // mainList.evaluateStatus(item); 
             mainList.addDataNumberToElements();
             mainList.addButtonFuntionality();
         }); 
@@ -83,7 +84,6 @@ const inputData = (function() {
                 panel.classList.add('panel-disabled'); 
             } else {
                 mainWindow.append(panel); 
-                panel.classList.add('task-today');
             }
         })
     }
@@ -156,7 +156,6 @@ const inputDataProject = (function(){
     const _dueDate_TaskProject = form.querySelector('input[id="due-date"]'); 
     const _priorityArr_TaskProject = form.querySelectorAll('input[class="priority-task"]'); 
 
-
     let _priorityVal_TaskProject; 
     let _dueDateElectionVal_TaskProject; 
 
@@ -165,7 +164,6 @@ const inputDataProject = (function(){
         for(let i = 0; i < _priorityArr_TaskProject.length; i++){
             if(_priorityArr_TaskProject[i].checked) {
                 _priorityVal_TaskProject = _priorityArr_TaskProject[i].value; 
-
             }
         } 
     }
@@ -174,7 +172,6 @@ const inputDataProject = (function(){
         for(let i = 0; i < _dueDateElectionArr_TaskProject.length; i++){
             if(_dueDateElectionArr_TaskProject[i].checked) {
                 _dueDateElectionVal_TaskProject = _dueDateElectionArr_TaskProject[i].value; 
-                
             }
         } 
     }
@@ -202,26 +199,29 @@ const inputDataProject = (function(){
             projects[elementNumber].showItemn(item)
             projects[elementNumber].addDataNumberToElements(elementNumber);
             projects[elementNumber].addButtonFuntionalityTaskProjects();
+          //  console.log('bro'); 
         }); 
     }
 
-    const deleteAllItemsInProject = function (elementNumber){
-       (projects[elementNumber].allItems()).length = 0; 
-    }
 
     const createTaskOfProject = function(elementNumber){
+        //console.log(elementNumber); 
         getPriorityStatus();
         getElectionDueDate();
+       
         addTaskToList(projects[elementNumber])
+      // console.log(projects[elementNumber].allItems()); 
         showLastObjectOfList(projects[elementNumber]);
         projects[elementNumber].addDataNumberToElements(elementNumber);
         projects[elementNumber].addButtonFuntionalityTaskProjects(); 
-    
+        //- Lista que lo llamó, cree task y la agregue 
+        // - visualizar esa task en el correcto window 
 
     }
 
 
     const grabNewInformationAndSaveInProject = function(elementNumber, taskNumber){
+        
         getPriorityStatus(); // toma volor del form
         getElectionDueDate(); // toma valor del form 
         updateInformation(elementNumber, taskNumber); // updatea el objeto 
@@ -238,6 +238,7 @@ const inputDataProject = (function(){
         } else {
             (projects[containerNumber].allItems())[taskNumber].date = _dueDate_TaskProject.value;
         }
+        
         (projects[containerNumber].allItems())[taskNumber].priority = _priorityVal_TaskProject; 
         
     }
@@ -250,17 +251,21 @@ const inputDataProject = (function(){
 
     const doneStatusInProject = function(containerNumber, taskNumber, status){
         (projects[containerNumber].allItems())[taskNumber].complete = status;  
+       // console.table((mainList.allItems())[containerNumber]); 
      }
 
      const grabNewProjectInfoAndSave = function(projectNumber){
         const inputColorProject = document.querySelector('input.checkbox-color');
+       // console.table(projectNumber); 
+       // console.table(projects)
+       // console.table(projects[projectNumber]); 
         projects[projectNumber]._listName = inputNameProject.value; 
         projects[projectNumber]._themeColor = inputColorProject.value; 
 
         return projects[projectNumber] 
 
      }
-return { createNewList, projects, createTaskOfProject, displayAllObjectsOfList, grabNewInformationAndSaveInProject,  deleteItemsOfProject, doneStatusInProject, grabNewProjectInfoAndSave, deleteAllItemsInProject}
+return { createNewList, projects, createTaskOfProject, displayAllObjectsOfList, grabNewInformationAndSaveInProject,  deleteItemsOfProject, doneStatusInProject, grabNewProjectInfoAndSave}
 
 })();
 

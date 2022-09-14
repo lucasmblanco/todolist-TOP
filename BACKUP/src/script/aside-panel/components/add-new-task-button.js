@@ -3,7 +3,7 @@ import mainWindow from '../../main-panel/main-panel-components/main-window.js';
 import pageFrameElement from '../../main-panel/main-panel-components/page-frame.js';
 import { inputData } from '../../data-managment/components/data-catcher.js';
 
-const buttonNewTask = (function(){
+const buttonNewTask = (function() {
     const buttonAddNewTask = document.querySelector('button#new-task'); 
     const mainPage = document.querySelector('div#main-window');
 

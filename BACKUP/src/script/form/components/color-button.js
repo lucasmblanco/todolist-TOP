@@ -59,7 +59,7 @@ const actionAddColor = (function(){
     }
 
     function createOptions(container){
-       // const formProject = document.querySelector('form#form-projects');
+        const formProject = document.querySelector('form#form-projects');
         colors.forEach(function(item){
             const optionContainer = document.createElement('div');
             optionContainer.classList.add('option-color-container');
@@ -72,14 +72,15 @@ const actionAddColor = (function(){
             inputCheckbox.setAttribute('name', 'color-pick');
 
 
-           
-            optionContainer.style.backgroundColor = item.hex; 
+            const colorCircle = document.createElement('div');
+            colorCircle.classList.add('color-circle');
+            colorCircle.style.backgroundColor = item.hex; 
             
             const colorName = document.createElement('label');
             colorName.setAttribute('for', item.color); 
             colorName.classList.add('color-name'); 
             colorName.textContent = item.color; 
-            optionContainer.append(inputCheckbox, colorName); 
+            optionContainer.append(inputCheckbox, colorCircle, colorName); 
             container.appendChild(optionContainer); 
 
             inputCheckbox.addEventListener('click', replaceContent)
@@ -87,13 +88,11 @@ const actionAddColor = (function(){
            // formProject.addEventListener('click', closeMenu); 
         })
 
-       
-    }
+}
 
 
 
     function replaceContent(e){
-       
         const colorButton = document.querySelector('div.button-container-color-picker');
         const colorButtonChild = colorButton.lastChild; 
         const buttonColorParentNode = colorButtonChild.parentNode;
@@ -101,7 +100,7 @@ const actionAddColor = (function(){
         
         containerColors.classList.add('container-colors-hidden');
         buttonColorParentNode.replaceChild(e.target.parentNode, colorButtonChild); 
-       // colorButton.classList.add('color-picker');
+
         colorButton.addEventListener('click', displayAvailableColors);
     }
 
@@ -110,18 +109,19 @@ const actionAddColor = (function(){
         const colorButton = document.querySelector('div.button-container-color-picker');
         const originalButtonColor = document.createElement('div');
         originalButtonColor.setAttribute('id', 'color-picker'); 
-        
         originalButtonColor.textContent = 'Choose a color'; 
 
         while(colorButton.firstChild && colorButton.removeChild(colorButton.firstChild));
 
         colorButton.append(originalButtonColor); 
+        
     }
 
     function closeMenu(e){
        
         const dropDownMenu = document.querySelector('div.container-colors')
         if(!(e.target.matches('.option-color-container')) && !(e.target.matches('#color-picker'))){
+            console.log('h');
             dropDownMenu.classList.remove('container-colors-active'); 
             dropDownMenu.classList.add('container-colors-hidden')
         }
