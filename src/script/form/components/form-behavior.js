@@ -55,10 +55,6 @@ const formBehaviors = (function(){
     const containerColorPicker = document.querySelector('div.button-container-color-picker');
     const containerColorPickerLastChild = containerColorPicker.lastChild; 
     const colorPickerParent = containerColorPickerLastChild.parentNode; 
-
-    //console.log(containerColorPickerLastChild);
-   // console.log(colorPickerParent); 
-
     formProjects.setAttribute('data-number-project-edit', projectNumber);
 
     titleProject.value = inputDataProject.projects[projectNumber]._listName;

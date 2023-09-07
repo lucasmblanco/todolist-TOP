@@ -145,15 +145,12 @@ const projectsPanel = (function(){
         const projects = inputDataProject.projects; 
         const mainPage = document.querySelector('div#main-window');
 
-        
-
         projectPanels.forEach(function(panel) {
             if (!panel.classList.contains('click-active')){
                 panel.classList.add('click-active'); 
                 panel.addEventListener('click', panelProperties);
             }
         })
-
 
         function panelProperties(e){
             if(mainPage.classList.length === 0) {

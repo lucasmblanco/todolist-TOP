@@ -153,6 +153,7 @@ main div.page-frame-project{
     color: var(--color-normal-font);
     letter-spacing: 2px;
     border: 1px solid var(--accent-color-pink-more-bright);
+  
 }
 
 main div.main-window-home {
@@ -201,6 +202,7 @@ main div.main-window-project{
     background-color: #e5e5f7;
     opacity: 1;
     background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #ebd2fc55, #ebd2fc);
+    padding: 30px;
 } 
 
 aside div#navigation-buttons-container {
@@ -814,7 +816,7 @@ div#projects-container{
     width: 80%;
     background-color: var(--accent-color-darker);
     border-radius: 3px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 li.project-element{
