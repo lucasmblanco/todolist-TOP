@@ -27,7 +27,7 @@ const mainWindow = (function(){
         mainPage.classList.add('main-window-project'); 
         mainPage.removeAttribute('style'); 
         mainPage.style.background = hexToRgbA(project._themeColor); 
-        mainPage.classList.add(`${project._listName}`)
+        mainPage.classList.add(`${project._listName.replaceAll(" ", "")}`)
     }
 
 
