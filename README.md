@@ -28,6 +28,7 @@ Creo que la página se comporta bastante bien, aunque con el uso de algun framew
 This project aims to implement proper code organization as well as the inclusion of Object-Oriented Programming (OOP) principles.
 
 ## Technologies Used 📚
+![Tools](https://skillicons.dev/icons?i=js,html,css,webpack)
 
 ## Key Features ⭐
 
